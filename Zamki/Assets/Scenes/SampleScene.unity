@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -475,6 +476,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cb723b3f6832643acc98d6b877ade8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1033239445
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1033239446}
+  - component: {fileID: 1033239447}
   m_Layer: 0
   m_Name: LaunchPoint
   m_TagString: Untagged
@@ -506,6 +520,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1540460950}
   m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
+--- !u!122 &1033239447
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033239445}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4291151301
+  m_Size: 3
 --- !u!1 &1087985924
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540460950}
   - component: {fileID: 1540460951}
+  - component: {fileID: 1540460952}
   m_Layer: 0
   m_Name: Slingshot
   m_TagString: Untagged
@@ -646,6 +673,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 4, z: 0}
+--- !u!114 &1540460952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540460949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c859fafe92836b478e0250fcee7d2e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabProjectile: {fileID: 9128434949396383711, guid: 9ffdf5acebf0def4f9a54dccc277cf64, type: 3}
+  velocityMult: 10
+  launchPoint: {fileID: 0}
+  launchPos: {x: 0, y: 0, z: 0}
+  projectile: {fileID: 0}
+  aimingMode: 0
 --- !u!1 &1970485841
 GameObject:
   m_ObjectHideFlags: 0
