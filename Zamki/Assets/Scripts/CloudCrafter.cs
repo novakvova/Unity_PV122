@@ -17,14 +17,55 @@ public class CloudCrafter : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        //створюємо хмаринки
+        cloudInstances = new GameObject[numClouds];
+        //Розташування наших хмаринок
+        GameObject anchor = GameObject.Find("CloudAnchor");
+        GameObject cloud;
+        for (int i = 0; i<numClouds; i++)
+        {
+            cloud = Instantiate(cloudPrefab);
+            //Встановлюємо місце розташування
+            Vector3 cPos = Vector3.zero;
+            cPos.x = Random.Range(cloudPosMin.x, cloudPosMax.x);
+            cPos.y = Random.Range(cloudPosMin.y, cloudPosMax.y);
+            //Маштаблування облако
+            float scaleU = Random.value;
+            float scaleVal = Mathf.Lerp(cloudScaleMin, cloudScaleMax, scaleU);
+            //менша хмаринка ближче до землі
+            cPos.y = Mathf.Lerp(cloudPosMin.y, cPos.y, scaleU);
+            //Менша хмаринка повина бути ближче до землі
+            cPos.z = 100 - 90 * scaleU;
+            //Застосовуємо отримані значення координат і маштаб до хмаринок
+            cloud.transform.position = cPos;
+            cloud.transform.localScale = Vector3.one * scaleVal;
+            //Робимо хмаринку дочірнім елементом до anchor
+            cloud.transform.SetParent(anchor.transform);
+            cloudInstances[i] = cloud;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        foreach(GameObject cloud in cloudInstances)
+        {
+            //Отримуємо маштаб і координати хмаринок
+            float scaleVal = cloud.transform.localScale.x;
+            Vector3 cPos = cloud.transform.position;
+            //Збільшуємо швидкість до найбижчої хмаринки - переміщаємо в ліво
+            cPos.x -= scaleVal * Time.deltaTime * cloudSpeedMult;
+
+            if(cPos.x <= cloudPosMin.x)
+            {
+                //перемідаємо його в право, якщо воно далеко зайшло в ліво
+                cPos.x = cloudPosMax.x;
+            }
+            //Встановлюємо позицію
+            cloud.transform.position = cPos;
+
+        }
     }
 }
