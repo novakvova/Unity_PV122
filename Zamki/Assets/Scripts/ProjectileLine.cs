@@ -12,7 +12,6 @@ public class ProjectileLine : MonoBehaviour
     private GameObject _poi;
     private List<Vector3> points;
 
-    // Start is called before the first frame update
     void Awake()
     {
         S = this; 
